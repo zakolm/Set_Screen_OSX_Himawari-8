@@ -34,7 +34,7 @@ def main():
     time = datetime.now(tz) - timedelta(minutes=40)
 
     # Set image path
-    out = '/Users/marina/Desktop/Analysis_of_algorithms/screen_mac/screen.png'
+    out = os.getcwd() + 'screen.png'
 
     # http://himawari8-dl.nict.go.jp/himawari8/img/D531106/
     base = 'http://himawari8.nict.go.jp/img/D531106/%sd/550' % (scale)
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read('logging.conf')
     logfile_path, logfile_name = re.findall('[A-z]+/[A-z]+.[A-z]+', config.get('handler_file', 'args'))[0].split('/')
-    if not logfile_path in os.listdir('./'):
+    if not logfile_path in os.listdir(os.getcwd()):
         os.mkdir(logfile_path)
     logging.config.fileConfig('logging.conf')
     logging.info('Начало программы')
